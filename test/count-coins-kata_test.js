@@ -42,7 +42,7 @@ exports.coins = {
     testCount(test, 5, [[0,0,1,0],[0,0,0,5]]);
   },
   '8 cents makes 2 change': function(test) {
-    testCount(test, 8, [[0,0,1,0],[0,0,0,8]]);
+    testCount(test, 8, [[0,0,1,3],[0,0,0,8]]);
   },
   '10 cents makes 4 change': function(test) {
     testCount(test, 10, [
@@ -121,4 +121,97 @@ exports.coins = {
       [0,0,0,25]
     ]);
   },
+  '100 cents makes 235 change': function(test) {
+    test.expect(1);
+    test.equal(coins.count(100).length, 235);
+    test.done();
+  }
+};
+
+exports.getChangeForPennies = {
+  '5 pennies makes 1 change': function(test) {
+    test.expect(1);
+    test.deepEqual(coins.getChangeForPennies(0,0,0,5), [
+      [0,0,0,5]
+    ]);
+    test.done();
+  }
+};
+
+exports.getChangeForNickels = {
+  '1 nickel makes 2 change': function(test) {
+    test.expect(1);
+    test.deepEqual(coins.getChangeForNickels(0,0,1,0), [
+      [0,0,1,0],
+      [0,0,0,5]
+    ]);
+    test.done();
+  },
+  '3 nickels makes 4 change': function(test) {
+    test.expect(1);
+    test.deepEqual(coins.getChangeForNickels(0,0,3,0), [
+      [0,0,3,0],
+      [0,0,2,5],
+      [0,0,1,10],
+      [0,0,0,15]
+    ]);
+    test.done();
+  }
+};
+
+exports.getChangeForDimes = {
+  '1 dime makes 4 change': function(test) {
+    test.expect(1);
+    test.deepEqual(coins.getChangeForDimes(0,1,0,0), [
+      [0,1,0,0],
+      [0,0,2,0],
+      [0,0,1,5],
+      [0,0,0,10]
+    ]);
+    test.done();
+  },
+  '3 dimes makes 16 change': function(test) {
+    test.expect(1);
+    test.deepEqual(coins.getChangeForDimes(0,3,0,0), [
+      [0,3,0,0],
+      [0,2,2,0],
+      [0,2,1,5],
+      [0,2,0,10],
+      [0,1,4,0],
+      [0,1,3,5],
+      [0,1,2,10],
+      [0,1,1,15],
+      [0,1,0,20],
+      [0,0,6,0],
+      [0,0,5,5],
+      [0,0,4,10],
+      [0,0,3,15],
+      [0,0,2,20],
+      [0,0,1,25],
+      [0,0,0,30]
+    ]);
+    test.done();
+  }
+};
+
+exports.getChangeForQuarters = {
+  '1 quarter makes 13 change': function(test) {
+    test.expect(1);
+    test.deepEqual(coins.getChangeForQuarters(1,0,0,0), [
+      [1,0,0,0],
+      [0,2,1,0],
+      [0,2,0,5],
+      [0,1,3,0],
+      [0,1,2,5],
+      [0,1,1,10],
+      [0,1,0,15],
+      [0,0,5,0],
+      [0,0,4,5],
+      [0,0,3,10],
+      [0,0,2,15],
+      [0,0,1,20],
+      [0,0,0,25]
+    ]);
+    test.done();
+  }
 };
