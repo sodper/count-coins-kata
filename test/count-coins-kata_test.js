@@ -68,7 +68,17 @@ exports.coins = {
       [0,0,0,15]
     ]);
   },
-  '20 cents makes 3 change': function(test) {
+  '18 cents makes 6 change': function(test) {
+    testCount(test, 18, [
+      [0,1,1,3],
+      [0,1,0,8],
+      [0,0,3,3],
+      [0,0,2,8],
+      [0,0,1,13],
+      [0,0,0,18]
+    ]);
+  },
+  '20 cents makes 9 change': function(test) {
     testCount(test, 20, [
       [0,2,0,0],
       [0,1,2,0],
@@ -79,6 +89,19 @@ exports.coins = {
       [0,0,2,10],
       [0,0,1,15],
       [0,0,0,20]
+    ]);
+  },
+  '23 cents makes 9 change': function(test) {
+    testCount(test, 23, [
+      [0,2,0,3],
+      [0,1,2,3],
+      [0,1,1,8],
+      [0,1,0,13],
+      [0,0,4,3],
+      [0,0,3,8],
+      [0,0,2,13],
+      [0,0,1,18],
+      [0,0,0,23]
     ]);
   },
 };
