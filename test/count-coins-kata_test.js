@@ -44,8 +44,12 @@ exports.coins = {
   '8 cents makes 2 change': function(test) {
     testCount(test, 8, [[0,0,1,0],[0,0,0,8]]);
   },
-  '10 cents makes 3 change': function(test) {
-    testCount(test, 10, [[0,1,0,0],[0,0,2,0],[0,0,0,10]]);
+  '10 cents makes 4 change': function(test) {
+    testCount(test, 10, [
+      [0,1,0,0],
+      [0,0,2,0],
+      [0,0,1,5],
+      [0,0,0,10]]);
   },
   '12 cents makes 4 change': function(test) {
     testCount(test, 12, [
